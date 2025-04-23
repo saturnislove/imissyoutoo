@@ -77,7 +77,7 @@ export default function MissMeApp() {
           <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-4">
             <img
               src={image}
-              alt="Saturn and their girlfriend"
+              alt="Saturn and Anki <3"
               className="rounded-2xl w-full object-contain object-center"
               style={{ maxHeight: '500px' }}
             />
