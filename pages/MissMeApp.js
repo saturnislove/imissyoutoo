@@ -15,15 +15,14 @@ const loveQuotes = [
   "You're nothing short of my everything."
 ];
 
-
-const loveImages = Array.from({ length: 25 }, (_, i) => `/${i + 1}.jpg`);
+const loveImages = Array.from({ length: 25 }, (_, i) => `/pictures/${i + 1}.jpg`);
 
 export default function MissMeApp() {
   const [showContent, setShowContent] = useState(false);
   const [quote, setQuote] = useState("");
   const [image, setImage] = useState("");
-  const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
+  const [playing, setPlaying] = useState(false);
 
   const getRandomQuote = () => {
     const randomIndex = Math.floor(Math.random() * loveQuotes.length);
@@ -47,31 +46,29 @@ export default function MissMeApp() {
   };
 
   const toggleAudio = () => {
-    if (!audioRef.current) return;
-    if (isPlaying) {
+    if (playing) {
       audioRef.current.pause();
     } else {
       audioRef.current.play();
     }
-    setIsPlaying(!isPlaying);
+    setPlaying(!playing);
   };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-pink-100 p-4 relative">
-      {/* 🎵 Music Player Button */}
-      <audio ref={audioRef} src="/love.mp3" loop />
+      <audio ref={audioRef} loop>
+        <source src="/love.mp3" type="audio/mp3" />
+        Your browser does not support the audio element.
+      </audio>
       <button
-        className="absolute top-4 right-4 bg-white text-pink-500 border border-pink-400 rounded-full px-3 py-1 text-sm shadow hover:bg-pink-50"
         onClick={toggleAudio}
+        className="absolute top-4 right-4 text-pink-500 font-semibold hover:text-pink-700"
       >
-        {isPlaying ? "pause music" : "play music"}
+        {playing ? "pause music" : "play music"}
       </button>
 
       {!showContent ? (
-        <button
-          className="text-xl px-6 py-3 bg-white rounded-xl shadow-md hover:shadow-lg transition"
-          onClick={handleInitialClick}
-        >
+        <button className="text-xl px-6 py-3 bg-white rounded-xl shadow-md hover:shadow-lg transition" onClick={handleInitialClick}>
           click this if you ever miss me
         </button>
       ) : (
@@ -82,26 +79,25 @@ export default function MissMeApp() {
           className="text-center"
         >
           <div className="max-w-md bg-white rounded-2xl shadow-xl p-4">
-            <img
-              src={image}
-              alt="Saturn and Anki <3"
-              className="rounded-2xl w-full object-cover object-center"
-              style={{ maxHeight: "500px" }}
+            <img 
+              src={image} 
+              alt="Saturn and their girlfriend" 
+              className="rounded-2xl w-full max-h-[500px] object-contain object-center"
             />
-            <p className="mt-4 text-lg italic font-serif text-pink-700">{quote}</p>
-
-            <div className="flex flex-col gap-2 mt-4">
-              <button
-                className="px-4 py-2 bg-pink-500 text-white rounded-xl hover:bg-pink-600"
-                onClick={handleCycleClick}
-              >
+            <p className="mt-4 text-lg italic font-serif text-pink-700">
+              {quote}
+            </p>
+            <div className="mt-4 space-y-2">
+              <button className="px-4 py-2 bg-pink-500 text-white rounded-xl hover:bg-pink-600" onClick={handleCycleClick}>
                 click again if you miss me extra
               </button>
-              <Link href="/">
-                <button className="px-4 py-2 bg-white text-pink-500 border border-pink-500 rounded-xl hover:bg-pink-50">
-                  go home
-                </button>
-              </Link>
+              <div>
+                <Link href="/">
+                  <button className="mt-2 px-4 py-2 bg-white text-pink-500 border border-pink-500 rounded-xl hover:bg-pink-50">
+                    go home
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </motion.div>
