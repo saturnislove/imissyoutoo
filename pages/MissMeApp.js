@@ -57,7 +57,7 @@ export default function MissMeApp() {
         className="absolute top-4 right-4 text-pink-600 hover:text-pink-800 text-2xl"
         aria-label="Toggle Music"
       >
-        ❤️
+        🎵❤️
       </button>
 
       {!showContent ? (
