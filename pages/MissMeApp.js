@@ -9,7 +9,8 @@ const loveQuotes = [
   "I love you not only for what you are, but for what I am when I am with you."
 ];
 
-const loveImages = Array.from({ length: 25 }, (_, i) => `/pictures/${i + 1}.jpg`);
+const loveImages = Array.from({ length: 25 }, (_, i) => `/${i + 1}.jpg`);
+
 
 export default function MissMeApp() {
   const [showContent, setShowContent] = useState(false);
@@ -56,7 +57,7 @@ export default function MissMeApp() {
           <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-4">
             <img
               src={image}
-              alt="Saturn and their girlfriend"
+              alt="Saturn and Anki <3"
               className="rounded-2xl w-full h-80 object-cover object-center"
             />
             <p className="mt-4 text-lg italic font-serif text-pink-600">
