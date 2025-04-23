@@ -9,8 +9,7 @@ const loveQuotes = [
   "I love you not only for what you are, but for what I am when I am with you."
 ];
 
-const loveImages = Array.from({ length: 25 }, (_, i) => `/pictures/${i + 1}.jpg`);
-
+const loveImages = Array.from({ length: 25 }, (_, i) => `/${i + 1}.jpg`);
 
 export default function MissMeApp() {
   const [showContent, setShowContent] = useState(false);
