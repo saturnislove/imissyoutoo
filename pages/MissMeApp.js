@@ -14,8 +14,6 @@ const loveQuotes = [
   "My heart is, and always will be, yours."
 ];
 
-const loveImages = Array.from({ length: 25 }, (_, i) => `/${i + 1}.jpg`);
-
 export default function MissMeApp() {
   const [showContent, setShowContent] = useState(false);
   const [quote, setQuote] = useState("");
@@ -27,19 +25,25 @@ export default function MissMeApp() {
   };
 
   const getRandomImage = () => {
-    const randomIndex = Math.floor(Math.random() * loveImages.length);
-    return loveImages[randomIndex];
+    const randomIndex = Math.floor(Math.random() * 25) + 1;
+    const jpgPath = `/${randomIndex}.jpg`;
+    const jpegPath = `/${randomIndex}.jpeg`;
+
+    const img = new Image();
+    img.src = jpgPath;
+    img.onerror = () => setImage(jpegPath);
+    setImage(jpgPath);
   };
 
   const handleInitialClick = () => {
     setQuote(getRandomQuote());
-    setImage(getRandomImage());
+    getRandomImage();
     setShowContent(true);
   };
 
   const handleCycleClick = () => {
     setQuote(getRandomQuote());
-    setImage(getRandomImage());
+    getRandomImage();
   };
 
   return (
