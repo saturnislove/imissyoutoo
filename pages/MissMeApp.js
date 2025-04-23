@@ -11,7 +11,6 @@ const loveQuotes = [
 
 const loveImages = Array.from({ length: 25 }, (_, i) => `/${i + 1}.jpg`);
 
-
 export default function MissMeApp() {
   const [showContent, setShowContent] = useState(false);
   const [quote, setQuote] = useState("");
@@ -40,6 +39,11 @@ export default function MissMeApp() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-pink-200 p-6">
+      {/* Background music */}
+      <audio autoPlay loop className="hidden">
+        <source src="/love.mp3" type="audio/mpeg" />
+      </audio>
+
       {!showContent ? (
         <button
           className="text-xl px-6 py-3 bg-pink-500 text-white rounded-xl shadow-md hover:shadow-lg transition hover:bg-pink-600"
@@ -58,7 +62,7 @@ export default function MissMeApp() {
             <img
               src={image}
               alt="Saturn and Anki <3"
-              className="rounded-2xl w-full h-80 object-cover object-center"
+              className="rounded-2xl w-full max-h-[500px] object-contain mx-auto"
             />
             <p className="mt-4 text-lg italic font-serif text-pink-600">
               {quote}
@@ -68,6 +72,12 @@ export default function MissMeApp() {
               onClick={handleCycleClick}
             >
               click again if you miss me extra
+            </button>
+            <button
+              className="mt-2 px-4 py-2 bg-white border border-pink-500 text-pink-500 rounded-xl hover:bg-pink-100"
+              onClick={() => setShowContent(false)}
+            >
+              go home
             </button>
           </div>
         </motion.div>
