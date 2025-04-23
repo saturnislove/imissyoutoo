@@ -11,7 +11,6 @@ const loveQuotes = [
 
 const loveImages = Array.from({ length: 25 }, (_, i) => `/pictures/${i + 1}.jpg`);
 
-
 export default function MissMeApp() {
   const [showContent, setShowContent] = useState(false);
   const [quote, setQuote] = useState("");
