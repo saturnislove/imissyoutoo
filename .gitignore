@@ -1,0 +1,37 @@
+# ── secrets ─────────────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p8
+*.p12
+*_token
+*_key
+credentials.json
+*serviceaccount*
+.venus/
+.pluto/
+.jupiter/
+
+# ── dependencies / build output ─────────
+node_modules/
+dist/
+build/
+out/
+web-dist/
+.netlify/
+__pycache__/
+*.pyc
+venv/
+.venv/
+*-venv/
+
+# ── artifacts / junk ────────────────────
+.DS_Store
+*.log
+deploy-*.zip
+*.tar.gz
+.claude/
+xcuserdata/
+*.xcuserstate
